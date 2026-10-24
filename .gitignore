@@ -1,0 +1,14 @@
+# Python Cache
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+env/
+
+# VS Code Settings
+.vscode/
+
+# Databases
+*.db
+campuspath.db
