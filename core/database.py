@@ -27,18 +27,26 @@ def initialize_db():
     cur.execute("SELECT COUNT(*) FROM courses")
     if cur.fetchone()[0] == 0:
         courses = [
-            # UJ
+            # --- UJ (University of Johannesburg) ---
+            ("University of Johannesburg", "Diploma in Business IT", 24, "ICT"),
+            ("University of Johannesburg", "Diploma in Sport Management", 26, "Humanities"),
             ("University of Johannesburg", "BCom Accounting", 34, "Commerce"),
             ("University of Johannesburg", "BSc Computer Science", 38, "Science"),
-            ("University of Johannesburg", "Diploma in Business IT", 24, "ICT"),
-            # Wits
+            ("University of Johannesburg", "BEng Tech in Civil Engineering", 40, "Engineering"),
+            
+            # --- Wits University ---
+            ("Wits University", "BA in Performing Arts", 28, "Humanities"),
             ("Wits University", "BCom Finance", 38, "Commerce"),
-            ("Wits University", "BSc Engineering", 42, "Engineering"),
             ("Wits University", "BA Law", 36, "Humanities"),
-            # TUT
-            ("Tshwane University of Technology", "Diploma in IT", 26, "ICT"),
+            ("Wits University", "BSc Engineering", 42, "Engineering"),
+            ("Wits University", "BSc in Biological Sciences", 34, "Science"),
+            
+            # --- TUT (Tshwane University of Technology) ---
             ("Tshwane University of Technology", "Diploma in Accounting", 24, "Commerce"),
-            ("Tshwane University of Technology", "BEng Tech in Electrical Engineering", 32, "Engineering")
+            ("Tshwane University of Technology", "Diploma in IT", 26, "ICT"),
+            ("Tshwane University of Technology", "Diploma in Hospitality Management", 28, "Tourism"),
+            ("Tshwane University of Technology", "BEng Tech in Electrical Engineering", 32, "Engineering"),
+            ("Tshwane University of Technology", "BSc in Agriculture", 30, "Science")
         ]
         for inst, course, aps, faculty in courses:
             cur.execute("INSERT INTO courses (institution, course_name, min_aps, faculty) VALUES (?, ?, ?, ?)", (inst, course, aps, faculty))
