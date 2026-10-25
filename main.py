@@ -6,12 +6,12 @@ from ui.login_view import LoginView
 def main(page: ft.Page):
     page.title = "CampusPath"
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.window_width = 700
-    page.window_height = 800
+
+    # Dimensions tailored for mobile scaling
+    page.window_width = 400
+    page.window_height = 850
 
     initialize_db()
-
-    # We add the view directly to the page
     page.add(LoginView(page))
 
 
