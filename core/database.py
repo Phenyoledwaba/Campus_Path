@@ -10,7 +10,6 @@ def initialize_db():
     conn = get_connection()
     cur = conn.cursor()
     
-    # Create tables
     cur.execute("""CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT)""")
         
@@ -18,30 +17,23 @@ def initialize_db():
         id INTEGER PRIMARY KEY, institution TEXT, course_name TEXT, 
         min_aps INTEGER, faculty TEXT)""")
     
-    # Seed demo user
     cur.execute("SELECT COUNT(*) FROM users")
     if cur.fetchone()[0] == 0:
         cur.execute("INSERT INTO users (username, password) VALUES (?, ?)", ("student", "demo123"))
         
-    # Seed REAL courses (UJ, Wits, TUT)
     cur.execute("SELECT COUNT(*) FROM courses")
     if cur.fetchone()[0] == 0:
         courses = [
-            # --- UJ (University of Johannesburg) ---
             ("University of Johannesburg", "Diploma in Business IT", 24, "ICT"),
             ("University of Johannesburg", "Diploma in Sport Management", 26, "Humanities"),
             ("University of Johannesburg", "BCom Accounting", 34, "Commerce"),
             ("University of Johannesburg", "BSc Computer Science", 38, "Science"),
             ("University of Johannesburg", "BEng Tech in Civil Engineering", 40, "Engineering"),
-            
-            # --- Wits University ---
             ("Wits University", "BA in Performing Arts", 28, "Humanities"),
             ("Wits University", "BCom Finance", 38, "Commerce"),
             ("Wits University", "BA Law", 36, "Humanities"),
             ("Wits University", "BSc Engineering", 42, "Engineering"),
             ("Wits University", "BSc in Biological Sciences", 34, "Science"),
-            
-            # --- TUT (Tshwane University of Technology) ---
             ("Tshwane University of Technology", "Diploma in Accounting", 24, "Commerce"),
             ("Tshwane University of Technology", "Diploma in IT", 26, "ICT"),
             ("Tshwane University of Technology", "Diploma in Hospitality Management", 28, "Tourism"),
