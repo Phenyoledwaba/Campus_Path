@@ -101,11 +101,11 @@ class DashboardView(ft.Column):
         student_aps = calculate_aps(marks)
         eligible = filter_eligible_courses(student_aps, get_all_courses())
 
-        self.results_list.controls.append(ft.Text("📊 Your APS Score", size=20, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_900))
+        self.results_list.controls.append(ft.Text("Your APS Score", size=20, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_900))
         self.results_list.controls.append(self.make_card("Your APS", str(student_aps), ft.Colors.GREEN_700, ft.Icons.STAR))
         
         self.results_list.controls.append(ft.Divider(height=20))
-        self.results_list.controls.append(ft.Text("💰 Funding Pathways", size=20, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_900))
+        self.results_list.controls.append(ft.Text("Funding Pathways", size=20, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_900))
         
         if "Under" in self.income_dropdown.value:
             self.results_list.controls.append(self.make_card("NSFAS", "Full Bursary", ft.Colors.BLUE_700, ft.Icons.MONEY, url="https://www.nsfas.org.za/content/"))
@@ -119,7 +119,7 @@ class DashboardView(ft.Column):
             self.results_list.controls.append(self.make_card("Study Loan", "Bank Loan", ft.Colors.GREY_700, ft.Icons.CREDIT_CARD, url="https://www.nsfas.org.za/"))
 
         self.results_list.controls.append(ft.Divider(height=20))
-        self.results_list.controls.append(ft.Text("🎓 Qualifying Courses", size=20, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_900))
+        self.results_list.controls.append(ft.Text("Qualifying Courses", size=20, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_900))
         
         for c in eligible:
             course_url = ""
